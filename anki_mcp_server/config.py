@@ -42,6 +42,17 @@ class Config:
     # a destructive action. disabled_tools still applies on top.
     enabled_destructive_tools: List[str] = field(default_factory=list)
 
+    # Deck limits
+    # Maximum nesting depth for deck names (:: separated). Default 7.
+    # Does NOT affect existing decks — only enforced on create action.
+    max_deck_depth: int = 7
+
+    # Deck backup settings
+    # Directory for deck structure snapshots. Empty = use addon's user_files.
+    deck_backup_dir: str = ""
+    # Maximum deck backup files to keep (oldest deleted when exceeded). Default 10.
+    deck_backup_max_count: int = 10
+
     # Batch operation limits
     # Maximum notes per add_notes / update_notes call (default 100)
     max_notes_per_batch: int = 100
